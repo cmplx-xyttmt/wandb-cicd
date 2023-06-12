@@ -1,13 +1,21 @@
 name: Label PR on Comment
 
-on:
-  issue_comment:
-    types: [created]
+on: issue_comment
 
 jobs:
-  label-pr:
+  pr_commented:
+    name: PR Comment
+    if: ${{ github.event.issue.pull_request }}
     runs-on: ubuntu-latest
-    if: github.event.issue.pull_request && contains(github.event.comment.body, '/bug')
+    steps:
+      - run: |
+          echo A comment on PR $NUMBER
+        env:
+          NUMBER: ${{ github.event.issue.number }}
+
+  label-pr:
+    if: ${{ github.event.issue.pull_request && contains(github.event.comment.body, '/bug') }}
+    runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
