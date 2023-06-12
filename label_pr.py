@@ -9,6 +9,6 @@ api.issues.create_label(name='custom-label', color='00ff00', description='A cust
 
 api.issues.add_labels(pr_number, labels=['bug', 'custom-label'])
 
-comment = api.issues.create_comment('Labeled this PR as a bug fix.')
+comment = api.issues.create_comment(pr_number, 'Labeled this PR as a bug fix.')
 
 print('View comment: ', comment.html_url)
