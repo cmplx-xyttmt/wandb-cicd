@@ -1,2 +1,13 @@
 wandb
 ghapi
+jupyterlab
+python-dotenv
+torch>=1.9
+fastai>=2.7
+matplotlib
+numpy
+pandas
+scikit-learn
+torchvision
+tqdm
+
